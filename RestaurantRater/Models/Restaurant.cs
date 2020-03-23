@@ -8,7 +8,7 @@ using System.Web;
 namespace RestaurantRater.Models
 {
     //Entity = keyword. For now we are thinking of them as the models that get stored in the DB. Different models will get stored in different places.
-    //Normally models just get passed back and forth from controller and view BUT This is our DATA level class it is what gets stored in our class 
+    //Normally models just get passed back and forth from controller and view BUT This is our DATA level class it is what gets stored in our DB
 
     public class Restaurant
     {
