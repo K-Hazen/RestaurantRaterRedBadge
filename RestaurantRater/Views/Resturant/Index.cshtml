@@ -10,7 +10,7 @@
     //Whatever view you are on when you run the app it opens to that view
     //View editing can be done WHILE the app is running, but only the view... canNOT change logic or functionality
 
-    ViewBag.Title = "Restaurants";
+    ViewBag.Title = "Index";
 }
 
 <h2>List of Restaurants</h2>
@@ -57,7 +57,10 @@
     </td>
     <td>
         @* Actoin Name = Edit, Route Values... the value that is passed when you route somewhere. It is a new type
-            changing up name so that it i*@
+            changing up name so that it is easier to differentiate 
+            
+            Currently there is a problem Model (in the foreach loop) is null therefore kicking up an error when it is displayed because controller is not returning anything... needs an argument... a model to pass to the veiw 
+            ** You cannot foreach through null but you can through zero *@
         @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) |
         @Html.ActionLink("More Info", "Edit", new { id = item.RestaurantID }) |
         @Html.ActionLink("Remove", "Edit", new { id = item.RestaurantID }) |
