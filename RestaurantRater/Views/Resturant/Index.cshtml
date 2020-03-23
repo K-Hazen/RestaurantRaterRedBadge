@@ -1,7 +1,70 @@
-﻿
+﻿@*//Need to connect the controller and the view to the mode  *@
+
+@* We are adding an IEnumberable because we need a collection (list or array) = numerator
+    We have to use the full address to call in Restaurant becasue we don't typically use... using statements in this area. We can add them if we want to *@
+
+
+@model IEnumerable<RestaurantRater.Models.Restaurant>
 @{
-    ViewBag.Title = "Index";
+    //This pulls in the Title property from shared views --> layout. ViewBag is not calling a property just setting the name
+    //Whatever view you are on when you run the app it opens to that view
+    //View editing can be done WHILE the app is running, but only the view... canNOT change logic or functionality
+
+    ViewBag.Title = "Restaurants";
 }
 
 <h2>List of Restaurants</h2>
+
+
+@* Returns an html <a>... Allows us to pass in different parameters using the ActionLink method...retunr the a tag, but we don't have to write it. It will change by passing in different paramenters ActionLink("Rate a Restaurant", "Create") etc.   *@
+<p>
+    @Html.ActionLink("Rate a Restaurant", "Create")
+</p>
+
+@*Add a table to our view*@
+
+<table class="table">
+    <tr>
+        @* Table Row *@
+        <th>
+            @*Table Header*@
+            @Html.DisplayNameFor(model => model.Name)    @* Here VS is seeing the Restaurant model as it gets passed through *@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th></th>
+    </tr>
+
+    @* Need to display something from a collection therefore will need to loop through it
+        **Model is a properties from the views... it is not refering to the lambda expressions above 
+        *@
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)  @* have to utilize lambda expression *@
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)  @* have to utilize lambda expression *@
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Rating)  @* have to utilize lambda expression *@
+    </td>
+    <td>
+        @* Actoin Name = Edit, Route Values... the value that is passed when you route somewhere. It is a new type
+            changing up name so that it i*@
+        @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) |
+        @Html.ActionLink("More Info", "Edit", new { id = item.RestaurantID }) |
+        @Html.ActionLink("Remove", "Edit", new { id = item.RestaurantID }) |
+    </td>
+</tr>
+
+    }
+
+</table>
 
