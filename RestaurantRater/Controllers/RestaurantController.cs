@@ -140,5 +140,26 @@ namespace RestaurantRater.Controllers
         }
 
 
+        //For Details (i.e. viewing lists of data) we don't need a POST method because we are not changing anything. Just need the GET method
+
+        //GET: Restaurant/Detail/{id}
+
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Restaurant restaurant = _dB.Restaurants.Find(id);
+
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
+
+        }
+
     }
 }
