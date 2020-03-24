@@ -40,32 +40,32 @@
     </tr>
 
     @* Need to display something from a collection therefore will need to loop through it
-        **Model is a properties from the views... it is not refering to the lambda expressions above 
-        *@
+        **Model is a properties from the views... it is not refering to the lambda expressions above
+    *@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)  @* have to utilize lambda expression *@
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address)  @* have to utilize lambda expression *@
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Rating)  @* have to utilize lambda expression *@
-    </td>
-    <td>
-        @* Actoin Name = Edit, Route Values... the value that is passed when you route somewhere. It is a new type
-            changing up name so that it is easier to differentiate 
-            
-            Currently there is a problem Model (in the foreach loop) is null therefore kicking up an error when it is displayed because controller is not returning anything... needs an argument... a model to pass to the veiw 
-            ** You cannot foreach through null but you can through zero *@
-        @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) |
-        @Html.ActionLink("More Info", "Edit", new { id = item.RestaurantID }) |
-        @Html.ActionLink("Remove", "Edit", new { id = item.RestaurantID }) |
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)  @* have to utilize lambda expression *@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)  @* have to utilize lambda expression *@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)  @* have to utilize lambda expression *@
+            </td>
+            <td>
+                @* Actoin Name = Edit, Route Values... the value that is passed when you route somewhere. It is a new type
+                    changing up name so that it is easier to differentiate
+
+                    Currently there is a problem Model (in the foreach loop) is null therefore kicking up an error when it is displayed because controller is not returning anything... needs an argument... a model to pass to the veiw
+                    ** You cannot foreach through null but you can through zero *@
+                @Html.ActionLink("Change", "Edit", new { id = item.RestaurantID }) |
+                @Html.ActionLink("More Info", "Detail", new { id = item.RestaurantID }) |
+                @Html.ActionLink("Remove", "Delete", new { id = item.RestaurantID }) |
+            </td>
+        </tr>
 
     }
 
